@@ -1,7 +1,27 @@
+.wrap {
+  align-items: flex-start;
+}
+
 .menu {
   width: 320px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
 }
 
 .form {
   max-width: 480px;
+  width: 100%;
+  position: relative;
+  z-index: 0;
+}
+
+.form > div {
+  width: 100%;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
 }
