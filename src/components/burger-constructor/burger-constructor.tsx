@@ -6,9 +6,11 @@ import {
   orderBurger,
   closeOrderModal
 } from '../../store/burger-constructor-slice';
+import { useNavigate } from 'react-router-dom';
 
 export const BurgerConstructor: FC = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const constructorItems = useSelector((state) => state.burgerConstructor);
 
@@ -20,7 +22,18 @@ export const BurgerConstructor: FC = () => {
     (state) => state.burgerConstructor.orderModalData
   );
 
+  const user = useSelector((state) => state.auth.user);
+
   const onOrderClick = () => {
+    if (!user) {
+      navigate('/login', {
+        state: {
+          from: '/'
+        }
+      });
+      return;
+    }
+
     if (!constructorItems.bun || orderRequest) return;
 
     dispatch(

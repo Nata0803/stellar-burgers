@@ -24,6 +24,8 @@ export const BurgerIngredients: FC = () => {
 
   const ingredients = useSelector(selectIngredients);
 
+  const constructorItems = useSelector((state) => state.burgerConstructor);
+
   const error = useSelector(selectIngredientsError);
 
   const buns = ingredients.filter((ingredient) => ingredient.type === 'bun');
